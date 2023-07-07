@@ -1,0 +1,37 @@
+// To parse this JSON data, do
+//
+//     final but030119010 = but030119010FromJson(jsonString);
+
+import 'dart:convert';
+
+But030119010 but030119010FromJson(String str) => But030119010.fromJson(json.decode(str));
+
+String but030119010ToJson(But030119010 data) => json.encode(data.toJson());
+
+class But030119010 {
+    String isim;
+    String okuladi;
+    String ogrenciNo;
+    List<String> permissions;
+
+    But030119010({
+        required this.isim,
+        required this.okuladi,
+        required this.ogrenciNo,
+        required this.permissions,
+    });
+
+    factory But030119010.fromJson(Map<String, dynamic> json) => But030119010(
+        isim: json["isim"],
+        okuladi: json["okuladi"],
+        ogrenciNo: json["OgrenciNo"],
+        permissions: List<String>.from(json["permissions"].map((x) => x)),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "isim": isim,
+        "okuladi": okuladi,
+        "OgrenciNo": ogrenciNo,
+        "permissions": List<dynamic>.from(permissions.map((x) => x)),
+    };
+}
